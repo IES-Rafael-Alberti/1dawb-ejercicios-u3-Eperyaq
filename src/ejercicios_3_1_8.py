@@ -1,7 +1,7 @@
 """
 Escribir un programa que pida al usuario una palabra y muestre por pantalla si es un palíndromo.
 """
-from ejercicio_2_3_4 import clean_terminal
+from ejercicios_3_1_1 import clean_terminal
 def preguntarPalabra():
     try:
         

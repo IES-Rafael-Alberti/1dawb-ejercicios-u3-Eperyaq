@@ -1,7 +1,7 @@
 """
 Escribir un programa que pregunte al usuario los números ganadores de la lotería primitiva, los almacene en una lista y los muestre por pantalla ordenados de menor a mayor.
 """
-from ejercicio_2_3_4 import clean_terminal
+from ejercicios_3_1_1 import clean_terminal
 
 def usuariosLoteria():
     while  numeros != "":

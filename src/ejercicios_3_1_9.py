@@ -1,7 +1,7 @@
 """
 Escribir un programa que pida al usuario una palabra y muestre por pantalla el número de veces que contiene cada vocal.
 """
-from ejercicio_2_3_4 import clean_terminal
+from ejercicios_3_1_1 import clean_terminal
 
 def listaPalabra():
     
@@ -38,6 +38,7 @@ def buclePalabra(palabra: str):
     
     
 def main():
+    
     clean_terminal()
     
     palabra = listaPalabra()

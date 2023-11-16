@@ -1,7 +1,7 @@
 """
 Escribir un programa que almacene en una lista los números del 1 al 10 y los muestre por pantalla en orden inverso separados por comas.
 """
-from ejercicio_2_3_4 import  clean_terminal
+from ejercicios_3_1_1 import  clean_terminal
 
 
 def lista():

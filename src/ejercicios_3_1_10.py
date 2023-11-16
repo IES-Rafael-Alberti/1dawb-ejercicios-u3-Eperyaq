@@ -1,7 +1,7 @@
 """
 Escribir un programa que almacene en una lista los siguientes precios: 50, 75, 46, 22, 80, 65, 8 y muestre por pantalla el menor y el mayor de los precios.
 """
-from ejercicio_2_3_4 import clean_terminal
+from ejercicios_3_1_1 import clean_terminal
 
 def tuplaPrecios ():
     

@@ -1,7 +1,13 @@
 """
 Escribir un programa que almacene las asignaturas de un curso (por ejemplo Matemáticas, Física, Química, Historia y Lengua) en una lista y la muestre por pantalla.
 """
-from ejercicio_2_3_4 import clean_terminal
+import os
+
+def clean_terminal():
+    if os.name == 'nt':
+        os.system('cls')
+    else: 
+        os.system('clear')
 
 def pedirAsignaturas():
     """Asks for the name of the subject.
