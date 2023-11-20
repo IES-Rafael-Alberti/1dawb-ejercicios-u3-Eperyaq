@@ -33,4 +33,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-#me falla la letra ya tengo las posiciones metida en la lista pero no se como hacer para meter las letra
+#bien
