@@ -4,22 +4,21 @@ Escribir un programa que pregunte al usuario los números ganadores de la loter�
 from ejercicios_3_1_1 import clean_terminal
 
 def usuariosLoteria():
+    numeros = []
+    
     while  numeros != "":
         numeros =  int(input("Dime los numeros de la lotería, cuando hayas terminado pulsa enter:"))
+        numeros.append()
 
-    return numeros
+    print(numeros)
 
-def crearLista(numeros): 
 
-    lista = []
-    lista.append(numeros)
-    return lista
+
 
 def main():
 
     clean_terminal()
-    numero = usuariosLoteria()
-    crearLista(numero)
+    usuariosLoteria()
 
 
 if __name__ == "__main__":
