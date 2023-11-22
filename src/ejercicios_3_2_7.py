@@ -13,7 +13,7 @@ def crear_diccionario()-> dict:
         else:
             precio = float(input(f"Introduzca el precio de {nombre}: "))
             lista_compra[nombre] = precio
-#se guarda la x que es el valor de salida tambien     
+     
     return lista_compra
         
 def sumar_precios(lista_compra: dict):
