@@ -29,22 +29,23 @@ def agregar_cliente(base_datos: dict):
     preferente = input("¿Es cliente preferente? (Sí/No): ").lower() == 'sí'
 
     #TODO: Crear un diccionario cliente con toda la información...
-    cliente = {"nif": nif, "nombre": nombre, "direccion": direccion, "telefono": telefono, "correo": correo, "preferente": preferente}
+    cliente = {"nombre": nombre, "direccion": direccion, "telefono": telefono, "correo": correo, "preferente": preferente}
     
 
     #TODO: Añadir el diccionario cliente que previamente has creado al 
     # diccionario principal que hemos llamado base_datos...
-    base_datos[cliente]
+    base_datos[nif] = cliente
 
     print(f"Cliente {nombre} añadido correctamente.")
 
 
 def eliminar_cliente(base_datos):
     nif = input("Ingrese el NIF del cliente que desea eliminar: ")
+    
     #TODO: eliminar el cliente con nif que se ha introducido
     #Si existe mostrar por consola "Cliente con NIF XXXXXXXXX eliminado correctamente."
     #Sino mostrar "No se encontró un cliente con NIF XXXXXXXXX en la base de datos."
-    ???
+    #???
 
 
 def mostrar_cliente(base_datos):
@@ -54,7 +55,7 @@ def mostrar_cliente(base_datos):
         print("\nDatos del cliente:")
         #TODO: Mostrar todos los datos del cliente
         #en cada línea de consola mostrar el par clave: valor de sus datos...
-        ???
+        #???
     else:
         print(f"No se encontró un cliente con NIF {nif} en la base de datos.")
 
