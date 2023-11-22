@@ -19,7 +19,14 @@ from ejercicios_3_2_1 import clean_terminal
     
     
 def añadir_clientes():
-    print()
+    nombre = input("Introduce tu nombre-> ")
+    nif = input("Introduce tu nif-> ")
+    direccion = input("Introduce tu direccion-> ")
+    telefono = input("Introduce tu telefono-> ")
+    correo = input("Introduce tu correo-> ")
+    preferente = input("Eres cliente preferente?  ")
+    nombre = input("Introduce tu nombre-> ")
+    nombre = input("Introduce tu nombre-> ")
 
 def eliminar_clientes():
     print()
@@ -37,7 +44,7 @@ def terminar_programa():
 
 def main():
     clean_terminal()
-    diccionario
+    diccionario = {}
     todo_ok= False
     
     while not todo_ok:
