@@ -77,15 +77,18 @@ def generar_tablero() -> list:
     """
     tablero = [[VACIO for _ in range(COLUMNAS)] for _ in range(FILAS)]
     #TODO: colocar las minas en el tablero
-    ???
+    
+    #he pensado en la funcion randdom.choice para que de una lista de las posiciones escoja un valor aleatorio para colocar la mina
+    
     calcular_numeros(tablero)
     return tablero
 
 
-def colocar_minas:
+def colocar_minas():
     """
     Esta función coloca las minas en el tablero de juego. Se asegura de que el número de minas colocadas sea igual a NUMERO_MINAS.
     """
+    
 
 
 
@@ -111,7 +114,7 @@ def contar_minas_adyacentes(tablero, fila, columna):
     :return: número de minas adyacentes a la celda(i,j) seleccionada
     """
     minas = 0
-    ???
+    #???
     return minas
 
 
@@ -120,7 +123,11 @@ def imprimir_tablero(tablero):
     Esta función toma el tablero como argumento e imprime cada celda del tablero.
     :param tablero: tablero de juego
     """
-    ???
+    #Hecho por mi 
+    for posicion_fila in range(FILAS):
+        print(posicion_fila)
+    for posicion_columna in range(COLUMNAS):
+        print(posicion_columna)
 
 
 def imprimir_tablero_oculto(tablero, celdas_reveladas, celdas_maracadas):
