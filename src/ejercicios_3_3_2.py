@@ -18,7 +18,7 @@ def pedir_alumnos():
 
     while not salir:
         if alumnos_primaria != "x" :
-            alumnos_primaria = input("Dime el nombre de pila de los alumnnos de primaria ('x' para salir): ").lower()
+            alumnos_primaria = input("Dime el nombre de pila de los alumnnos de primaria ('x' para salir): ").capitalize()
             
         else:
             salir = True
@@ -42,3 +42,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+    """
+    print({alumnos_primaria}  | {alumnos_secundaria})
+    print({alumnos_primaria}.union({alumnos_secundaria}))
+
+conj_primaria = {alumnos_primaria}
+conj_secundaria = {alumnos_secundaria}
+    interseccion de dos conjuntos
+    print(conj_primaria & conj_secundaria)
+
+    print(conj_primaria - conj_secundaria) ->  conjunto
+
+    print(conj_primaria  <= conj_secundaria)-> true o false
+
+    """
