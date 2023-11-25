@@ -68,6 +68,7 @@ MINA = "*"
 BANDERA = "F"
 VALOR_CELDA_DEFECTO = "."
 
+        
 
 def generar_tablero() -> list:
     """
@@ -94,10 +95,6 @@ def colocar_minas(tablero):
         if tablero[fila][columna] != MINA:
             tablero [fila][columna] = MINA
             cont += 1
-
-    
-    
-
 
 
 def calcular_numeros(tablero):
@@ -211,12 +208,7 @@ def revelar_celda(tablero, celdas_reveladas, celdas_marcadas, fila, columna) -> 
         celdas_marcadas.discard((fila, columna))
     else:  # La celda está vacía
         revelar_celdas_vacias(tablero, celdas_reveladas, celdas_marcadas, fila, columna)
-    try:
-        if REVELAR == NUMERO_MINAS:
-            raise Exception
-            
-    except Exception:
-        print("No puedes poner más banderas.")
+    
 
     return revelada
 
@@ -254,8 +246,10 @@ def marcar_celda(tablero, celdas_marcadas, fila, columna):
     if (fila, columna) not in celdas_marcadas:
         celdas_marcadas.add((fila, columna))
         tablero[fila][columna] = BANDERA
-
-
+                    
+            
+  
+        
 def verificar_victoria(tablero, celdas_reveladas) -> bool:
     """
     Esta función verifica si el jugador ha ganado el juego. Que se daŕa solo y solo si todas las celdas que no contienen
@@ -296,7 +290,7 @@ def jugar():
 
             if celda_con_mina:
                 clean_terminal()
-                print(f"¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Oh no! ¡Has pisado una mina!!!!!!!!!!!!!!!!!!!!! \n en la posicion{[fila],[columna]}")
+                print(f"¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Oh no! ¡Has pisado una mina!!!!!!!!!!!!!!!!!!!!! \n en la posicion{[fila +1 ],[columna+1 ]}")
                 imprimir_tablero(tablero)
                 terminar_juego = True
             elif verificar_victoria(tablero, celdas_reveladas):
