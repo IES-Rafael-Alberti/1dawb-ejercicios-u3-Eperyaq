@@ -50,7 +50,7 @@ el número total de minas adyacentes que tiene la celda.
 - Comprueba por qué no funciona la función jugar()... yo que tú empezaba a depurar.
 
 """
-
+from ejercicios_3_2_1 import clean_terminal
 import random
 
 # Acciones del jugador
@@ -93,6 +93,7 @@ def colocar_minas(tablero):
         columna = random.randint(0,COLUMNAS - 1 )
         if tablero[fila][columna] != MINA:
             tablero [fila][columna] = MINA
+            cont += 1
 
     
     
@@ -210,6 +211,12 @@ def revelar_celda(tablero, celdas_reveladas, celdas_marcadas, fila, columna) -> 
         celdas_marcadas.discard((fila, columna))
     else:  # La celda está vacía
         revelar_celdas_vacias(tablero, celdas_reveladas, celdas_marcadas, fila, columna)
+    try:
+        if REVELAR == NUMERO_MINAS:
+            raise Exception
+            
+    except Exception:
+        print("No puedes poner más banderas.")
 
     return revelada
 
@@ -267,9 +274,11 @@ def verificar_victoria(tablero, celdas_reveladas) -> bool:
 
 
 def jugar():
+    
     """
     Esta función ejecuta el juego. Primero genera un tablero de juego, luego pide al jugador que ingrese una acción, una fila y una columna. Luego, revela la celda seleccionada y verifica si el jugador ha ganado o perdido el juego. Si el jugador ha ganado o perdido, termina el juego. Si no, pide al jugador que ingrese una acción, una fila y una columna nuevamente.
     """
+    clean_terminal()
     tablero = generar_tablero()
     celdas_reveladas = set()
     celdas_marcadas = set()
@@ -286,7 +295,8 @@ def jugar():
             celda_con_mina = not revelar_celda(tablero, celdas_reveladas, celdas_marcadas, fila, columna)
 
             if celda_con_mina:
-                print("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Oh no! ¡Has pisado una mina!!!!!!!!!!!!!!!!!!!!!")
+                clean_terminal()
+                print(f"¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Oh no! ¡Has pisado una mina!!!!!!!!!!!!!!!!!!!!! \n en la posicion{[fila],[columna]}")
                 imprimir_tablero(tablero)
                 terminar_juego = True
             elif verificar_victoria(tablero, celdas_reveladas):
@@ -295,7 +305,7 @@ def jugar():
                 terminar_juego = True
         elif accion == MARCAR:
             marcar_celda(tablero, celdas_marcadas, fila, columna)
-
+        
 
 if __name__ == "__main__":
     """
