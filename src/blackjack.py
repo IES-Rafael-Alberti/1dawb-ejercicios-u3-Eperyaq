@@ -37,7 +37,7 @@ PALOS = ('Corazones', 'Picas', 'Treboles', 'Diamantes')
 
 CARTAS = ('As', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K')
 
-VALORES = ???
+VALORES = {"As" : (1,11), "2" : 2, "3" : 3, "4" : 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10" : 10, "J": 10, "Q" : 10, "K" : 10}
 
 PUNTOS_OBJETIVO = 21
 CARTAS_AL_INICIO = 21
@@ -58,10 +58,16 @@ def pulse_tecla_para_continuar():
     os.system("pause")
 
 
-def crear_baraja() -> set:
+def crear_baraja() -> set: #COMPROBAR SI ESTA BIEN
     """ Crear la baraja de 52 cartas
     """
-    return set((carta, palo) for carta in CARTAS, PALOS)
+    palo = PALOS
+    
+    for carta in CARTAS, PALOS:
+        set(carta,palo)
+        
+    
+    return set(carta,palo)
 
 
 def reparte_carta(baraja: set) -> tuple:
@@ -76,10 +82,10 @@ def dame_carta(baraja: set, cartas_jugador: list) -> bool:
     carta = reparte_carta(baraja)
     if carta == None:
         #No existen más cartas en la baraja
-        return False
+        return True #CAMBIO
     else:
         cartas_jugador.append(carta)
-        return True
+        return False
 
 
 def contesta_a_pregunta(mensaje: str) -> bool:
@@ -91,7 +97,7 @@ def contesta_a_pregunta(mensaje: str) -> bool:
             print("*Error* respuesta no válida (s, si, n, no)")
         respuesta = input(mensaje).strip().lower()
 
-    return respuesta in ???
+    return respuesta in pedir_carta()   #TRIPLE IGUAL HAY QUE CAMBIAR
 
 
 def pedir_carta(baraja: set, cartas_jugador: list) -> bool:
@@ -124,24 +130,24 @@ def calcular_puntos(cartas_jugador: list) -> int:
     return puntos > PUNTOS_OBJETIVO, puntos
 
 
-def valor_carta(carta: tuple, valor_minimo = True) -> int:
+def valor_carta(carta: tuple, valor_minimo = True) -> int: #PUEDE QUE INVENTADA
     """ Retornar el valor de una carta, si tiene más de uno retornará el valor mínimo o máximo dependiendo de valor_minimo
     """
     if VALORES[carta] == tuple and VALORES[carta] == 2:
         if valor_minimo:
-            return ???
+            return 1
         else:
-            return ???
+            return 11
     else:
         return int(VALORES[carta])
    
 
-def mostrar_cartas(jugador, puntos, cartas_jugador: list):
+def mostrar_cartas(jugador, puntos, cartas_jugador: list): #COMPROBAR
     """ Mostrar los puntos y cartas de un jugador
     """
     print(jugador)
     print("-" * len(puntos))
-    print(f"\t{puntos} puntos >>\n" + "\n".(f"\t{carta[0]} de {carta[1]}" for )) 
+    print(f"\t{puntos} puntos >>\n" + "\n" .join(f"\t{carta[0]} de {carta[1]}" for carta in cartas_jugador)) 
 
 
 def mostrar_resultado(cartas_jugador1, puntosJ1, cartas_jugador2, puntosJ2):
@@ -170,7 +176,7 @@ def mostrar_resultado(cartas_jugador1, puntosJ1, cartas_jugador2, puntosJ2):
     borrar_consola()
 
 
-def jugar():
+def jugar(baraja):
     """ Jugar al black jack entre dos jugadores
     """
     ronda = 1
@@ -206,7 +212,8 @@ def jugar():
 
 
 def main():
-    baraja = crear_baraja()
+    baraja = crear_baraja(carta, palo)
+    jugar(baraja)
 
     seguir_jugando = True
 
