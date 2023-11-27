@@ -62,12 +62,14 @@ def crear_baraja() -> set: #COMPROBAR SI ESTA BIEN
     """ Crear la baraja de 52 cartas
     """
     palo = PALOS
-    
+    carta = ()
+    conjunto_baraja = set()
     for carta in CARTAS, PALOS:
-        set(carta,palo)
+        conjunto_baraja.add(carta)
+        conjunto_baraja.add(palo)
         
     
-    return set(carta,palo)
+    return conjunto_baraja
 
 
 def reparte_carta(baraja: set) -> tuple:
@@ -76,7 +78,7 @@ def reparte_carta(baraja: set) -> tuple:
     return baraja.pop()
     
 
-def dame_carta(baraja: set, cartas_jugador: list) -> bool:
+def dame_carta(baraja: set, cartas_jugador: list, mano_jugador_1) -> bool:
     """ Pide una carta, la guarda en la lista del jugador y retorna True si la baraja se ha quedado sin cartas
     """
     carta = reparte_carta(baraja)
@@ -150,12 +152,12 @@ def mostrar_cartas(jugador, puntos, cartas_jugador: list): #COMPROBAR
     print(f"\t{puntos} puntos >>\n" + "\n" .join(f"\t{carta[0]} de {carta[1]}" for carta in cartas_jugador)) 
 
 
-def mostrar_resultado(cartas_jugador1, puntosJ1, cartas_jugador2, puntosJ2):
+def mostrar_resultado(cartas_jugador1, puntosJ1, cartas_jugador2, puntosJ2, mano_jugador_1: list, mano_jugador_2: list):
     """ Mostrar el resultado final del juego
     """
     borrar_consola()
-    mostrar_cartas("Jugador 1", puntosJ1, cartas_jugador1)
-    mostrar_cartas("\nJugador 2", puntosJ2, cartas_jugador2)
+    mostrar_cartas("Jugador 1", puntosJ1, cartas_jugador1, mano_jugador_1)
+    mostrar_cartas("\nJugador 2", puntosJ2, cartas_jugador2, mano_jugador_2)
     print()
 
     if puntosJ1 > PUNTOS_OBJETIVO and puntosJ2 > PUNTOS_OBJETIVO:
@@ -183,10 +185,12 @@ def jugar(baraja):
     cartas_jugador1 = 0
     cartas_jugador2 = 0
     puntosJ1 = puntosJ2 = 0
+    mano_jugador_1 = []
+    mano_jugador_2 = []
 
     for _ in range(CARTAS_AL_INICIO):
-        finJ1 = not dame_carta(baraja, cartas_jugador1)
-        finJ2 = not dame_carta(baraja, cartas_jugador2)
+        finJ1 = not dame_carta(baraja, cartas_jugador1, mano_jugador_1)
+        finJ2 = not dame_carta(baraja, cartas_jugador2, mano_jugador_2)
   
     while not (finJ1 and finJ2):
 
@@ -195,24 +199,25 @@ def jugar(baraja):
         print(f"RONDA: {ronda}\n")
 
         if not finJ1:
-            finJ1, puntosJ1 = calcular_puntos(cartas_jugador1)
+            finJ1, puntosJ1 = calcular_puntos(mano_jugador_1)
 
         if not finJ2:
-            finJ2, puntosJ2 = calcular_puntos(cartas_jugador2)
+            finJ2, puntosJ2 = calcular_puntos(mano_jugador_2)
 
         if not finJ1:
-            mostrar_cartas("Jugador 1", puntosJ1, cartas_jugador1)
-            finJ1 = not pedir_carta(baraja, cartas_jugador1)
+            mostrar_cartas("Jugador 1", puntosJ1, mano_jugador_1)
+            finJ1 = not pedir_carta(baraja, mano_jugador_1)
 
         if not finJ2:
-            mostrar_cartas("\nJugador 2", puntosJ2, cartas_jugador2)
-            finJ2 = not pedir_carta(baraja, cartas_jugador2)
+            mostrar_cartas("\nJugador 2", puntosJ2, mano_jugador_2)
+            finJ2 = not pedir_carta(baraja, mano_jugador_2)
 
-    mostrar_resultado(cartas_jugador1, puntosJ1, cartas_jugador2, puntosJ2)
+    mostrar_resultado(mano_jugador_1, puntosJ1, mano_jugador_2, puntosJ2)
 
 
 def main():
-    baraja = crear_baraja(carta, palo)
+    
+    baraja = crear_baraja()
     jugar(baraja)
 
     seguir_jugando = True
